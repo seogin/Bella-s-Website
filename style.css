@@ -1,0 +1,77 @@
+  .roboto-thin {
+    font-family: "Roboto", sans-serif;
+    font-weight: 300;
+    font-style: normal;
+    font-size: 18px;
+  }
+
+  .wave-text span {
+    font-family: "EB Garamond",
+      serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-variation-settings:
+      "wdth" 100;
+    font-size: 55px;
+    padding-left: 5px;
+    display: inline-block;
+    animation: wave 1.5s infinite;
+  }
+
+  /* .item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+       */
+.dots {
+  flex-grow: 1;
+  /* Take available space */
+  margin: 0 8px;
+  /* Space from text */
+  background-image: linear-gradient(to right, transparent, transparent 90%, black 10%);
+  background-size: 10px 1px;
+  /* Increase spacing by adjusting the width */
+  background-repeat: repeat-x;
+  background-position: center;
+}
+
+.logo {
+  width:50px;
+  /* height:50px; */
+  
+}
+
+  @keyframes wave {
+
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+
+    50% {
+      transform: translateY(-20px);
+    }
+  }
+
+  .wave-text span:nth-child(1) {
+    animation-delay: 0.1s;
+  }
+
+  .wave-text span:nth-child(2) {
+    animation-delay: 0.2s;
+  }
+
+  .wave-text span:nth-child(3) {
+    animation-delay: 0.3s;
+  }
+
+  .wave-text span:nth-child(4) {
+    animation-delay: 0.4s;
+  }
+
+  .wave-text span:nth-child(5) {
+    animation-delay: 0.5s;
+  }
+
