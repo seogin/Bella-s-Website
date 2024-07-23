@@ -36,5 +36,23 @@ function change_background(event) {
   updateBackground();
 }
 
-// Update background and text color when the page loads
-document.addEventListener('DOMContentLoaded', updateBackground);
+function reset_localstorage() {
+  var hours = 1; // to clear the localStorage after 1 hour
+  // (if someone want to clear after 8hrs simply change hours=8)
+  var now = new Date().getTime();
+  var setupTime = localStorage.getItem('setupTime');
+  if (setupTime == null) {
+    localStorage.setItem('setupTime', now)
+  } else {
+    if (now - setupTime > hours * 60 * 1000) {
+      localStorage.clear();
+      localStorage.setItem('setupTime', now);
+    }
+  }
+}
+
+// Ensure both functions are called when the page loads
+document.addEventListener('DOMContentLoaded', function () {
+  reset_localstorage();
+  updateBackground();
+});
