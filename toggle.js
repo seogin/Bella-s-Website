@@ -44,7 +44,7 @@ function reset_localstorage() {
   if (setupTime == null) {
     localStorage.setItem('setupTime', now)
   } else {
-    if (now - setupTime > hours * 60 * 1000) {
+    if (now - setupTime > hours * 60 * 60 * 1000) {
       localStorage.clear();
       localStorage.setItem('setupTime', now);
     }
