@@ -25,8 +25,8 @@ function updateBackground() {
 
 // Function to change to the next theme
 function change_background(event) {
-  // Prevent background change if the clicked element is the "GET DIRECTIONS" button
-  if (event.target.closest('a') && event.target.closest('a').classList.contains('ignore-background-change')) {
+  // Prevent background changes inside interactive areas that opt out.
+  if (event.target.closest('.ignore-background-change')) {
     return;
   }
 

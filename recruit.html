@@ -33,7 +33,7 @@
     </a>
   </nav>
 
-  <main class="application-page">
+  <main class="application-page" onclick="change_background(event)">
     <section class="application-intro">
       <p class="application-kicker">CAREERS AT BELIZ</p>
       <h1>Come work with us.</h1>
@@ -44,7 +44,7 @@
     </section>
 
     <!-- Replace YOUR_BASIN_FORM_ID with the ID from your Basin form endpoint. -->
-    <form id="application-form" class="application-form"
+    <form id="application-form" class="application-form ignore-background-change"
       action="https://usebasin.com/f/f292e6b2c0a1"
       method="POST"
       enctype="multipart/form-data"
@@ -136,6 +136,7 @@
 
   <script src="https://js.usebasin.com/v2.11.1.min.js" defer></script>
   <script src="recruit.js"></script>
+  <script src="toggle.js"></script>
 </body>
 
 </html>

@@ -43,10 +43,13 @@ document.addEventListener("basinjsFormSuccess", (event) => {
   }
 
   applicationForm.reset();
-  formStatus.textContent = "Thank you. Your application has been sent.";
+  formStatus.textContent = "Thank you. Your application has been sent. Returning to the home page…";
   formStatus.className = "form-status-success";
-  submitButton.disabled = false;
-  submitButton.textContent = "SUBMIT APPLICATION";
+  submitButton.textContent = "SENT";
+
+  window.setTimeout(() => {
+    window.location.href = "index.html";
+  }, 1200);
 });
 
 document.addEventListener("basinjsFormError", (event) => {
