@@ -17,12 +17,17 @@ resumeInput.addEventListener("change", () => {
   }
 });
 
-applicationForm.addEventListener("submit", async (event) => {
-  event.preventDefault();
-
-  if (applicationForm.action.includes("YOUR_FORM_ID")) {
-    formStatus.textContent = "This form still needs its Formspree form ID before it can send applications.";
+applicationForm.addEventListener("submit", (event) => {
+  if (applicationForm.action.includes("YOUR_BASIN_FORM_ID")) {
+    event.preventDefault();
+    event.stopImmediatePropagation();
+    formStatus.textContent = "This form still needs its Basin form ID before it can send applications.";
     formStatus.className = "form-status-error";
+  }
+}, true);
+
+document.addEventListener("basinjsFormSubmitted", (event) => {
+  if (event.detail.form !== applicationForm) {
     return;
   }
 
@@ -30,30 +35,31 @@ applicationForm.addEventListener("submit", async (event) => {
   submitButton.textContent = "SENDING…";
   formStatus.textContent = "";
   formStatus.className = "";
+});
 
-  try {
-    const response = await fetch(applicationForm.action, {
-      method: "POST",
-      body: new FormData(applicationForm),
-      headers: {
-        Accept: "application/json",
-      },
-    });
-
-    if (!response.ok) {
-      const result = await response.json().catch(() => ({}));
-      const errorMessage = result.errors?.map((error) => error.message).join(" ");
-      throw new Error(errorMessage || "We could not send your application.");
-    }
-
-    applicationForm.reset();
-    formStatus.textContent = "Thank you. Your application has been sent.";
-    formStatus.className = "form-status-success";
-  } catch (error) {
-    formStatus.textContent = `${error.message} Please try again or contact Beliz directly.`;
-    formStatus.className = "form-status-error";
-  } finally {
-    submitButton.disabled = false;
-    submitButton.textContent = "SUBMIT APPLICATION";
+document.addEventListener("basinjsFormSuccess", (event) => {
+  if (event.detail.form !== applicationForm) {
+    return;
   }
+
+  applicationForm.reset();
+  formStatus.textContent = "Thank you. Your application has been sent.";
+  formStatus.className = "form-status-success";
+  submitButton.disabled = false;
+  submitButton.textContent = "SUBMIT APPLICATION";
+});
+
+document.addEventListener("basinjsFormError", (event) => {
+  if (event.detail.form !== applicationForm) {
+    return;
+  }
+
+  const basinError = event.detail.error;
+  const errorMessage = typeof basinError === "string"
+    ? basinError
+    : basinError?.message || "We could not send your application.";
+  formStatus.textContent = `${errorMessage} Please try again or contact Beliz directly.`;
+  formStatus.className = "form-status-error";
+  submitButton.disabled = false;
+  submitButton.textContent = "SUBMIT APPLICATION";
 });
