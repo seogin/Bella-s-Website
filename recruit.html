@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Apply to join Beliz Hair Studio.">
+  <title>Careers | Beliz Hair Studio</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="font-roboto bg-gray-100">
+  <nav class="flex justify-between p-5 text-sm xl:mx-60 lg:text-lg">
+    <a href="index.html" aria-label="Beliz Hair Studio home">
+      <img class="logo" src="./1x/black.png" alt="Beliz Hair Studio">
+    </a>
+    <a href="https://www.vagaro.com/bybellahair" class="flex items-center gap-1">
+      BOOK NOW
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="14" fill="currentColor" viewBox="0 0 16 16"
+        aria-hidden="true">
+        <path
+          d="M10.854 8.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 0 1 .708-.708L7.5 10.793l2.646-2.647a.5.5 0 0 1 .708 0" />
+        <path
+          d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5M2 2a1 1 0 0 0-1 1v11a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V3a1 1 0 0 0-1-1z" />
+        <path d="M2.5 4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5H3a.5.5 0 0 1-.5-.5z" />
+      </svg>
+    </a>
+  </nav>
+
+  <main class="application-page">
+    <section class="application-intro">
+      <p class="application-kicker">CAREERS AT BELIZ</p>
+      <h1>Come work with us.</h1>
+      <p>
+        We are always happy to meet thoughtful, creative people who care about great hair and a welcoming client
+        experience. Tell us a little about yourself and attach your résumé.
+      </p>
+    </section>
+
+    <!-- Replace YOUR_FORM_ID with the ID from your Formspree dashboard. -->
+    <form id="application-form" class="application-form" action="https://formspree.io/f/mdaqjpez" method="POST"
+      enctype="multipart/form-data">
+      <input type="hidden" name="_subject" value="New Beliz job application">
+
+      <div class="application-grid">
+        <label>
+          <span>First name</span>
+          <input type="text" name="first_name" autocomplete="given-name" maxlength="60" required>
+        </label>
+
+        <label>
+          <span>Last name</span>
+          <input type="text" name="last_name" autocomplete="family-name" maxlength="60" required>
+        </label>
+
+        <label>
+          <span>Email</span>
+          <input type="email" name="email" autocomplete="email" maxlength="120" required>
+        </label>
+
+        <label>
+          <span>Phone</span>
+          <input type="tel" name="phone" autocomplete="tel" maxlength="30" required>
+        </label>
+
+        <label>
+          <span>Position</span>
+          <input type="text" name="position" value="Hair Stylist" readonly>
+          <!-- <select name="position" required> -->
+            <!-- <option value="" selected disabled>Select a position</option> -->
+            <!-- <option>Hair stylist</option> -->
+            <!-- <option>Hair assistant</option> -->
+            <!-- <option>Reception / guest services</option> -->
+            <!-- <option>Other</option> -->
+          <!-- </select> -->
+        </label>
+
+        <label>
+          <span>Available start date</span>
+          <input type="date" name="available_date" required>
+        </label>
+      </div>
+
+      <label class="application-wide">
+        <span>Brief introduction</span>
+        <textarea name="message" rows="5" maxlength="1200"
+          placeholder="Tell us about your experience, interests, and why you would like to join Beliz." required></textarea>
+        <small>Maximum 1,200 characters.</small>
+      </label>
+
+      <label class="application-upload">
+        <span>Résumé</span>
+        <input id="resume" type="file" name="resume"
+          accept=".pdf,.doc,.docx,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+          required>
+        <small>PDF, DOC, or DOCX. Maximum 10 MB.</small>
+      </label>
+
+      <label class="application-consent">
+        <input type="checkbox" name="privacy_consent" value="I consent" required>
+        <span>I consent to Beliz using my information to review and respond to this application.</span>
+      </label>
+
+      <div class="application-actions">
+        <button id="submit-button" type="submit">SUBMIT APPLICATION</button>
+        <p id="form-status" role="status" aria-live="polite"></p>
+      </div>
+    </form>
+  </main>
+
+  <footer class="p-5 text-sm xl:mx-60 xl:mt-20 xl:pb-8 lg:text-lg">
+    <div class="footer-links">
+      <a href="price.html">PRICES</a>
+      <a href="info.html">INFO</a>
+      <a href="location.html">LOCATION</a>
+      <a href="recruit.html" aria-current="page">CAREERS</a>
+      <a href="https://www.instagram.com/beliz.bella_/">INSTAGRAM</a>
+    </div>
+  </footer>
+
+  <script src="recruit.js"></script>
+</body>
+
+</html>
