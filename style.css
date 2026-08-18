@@ -43,6 +43,32 @@
   
 }
 
+.main-logo {
+  width: min(66vw, 280px);
+  aspect-ratio: 3 / 1;
+  background-color: currentColor;
+  -webkit-mask: url("./1x/main-wordmark.webp") center / contain no-repeat;
+  mask: url("./1x/main-wordmark.webp") center / contain no-repeat;
+  animation: logo-float 2.2s ease-in-out infinite;
+}
+
+@keyframes logo-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-14px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .main-logo {
+    animation: none;
+  }
+}
+
 .application-page {
   width: min(100% - 2.5rem, 760px);
   margin: 4rem auto 0;
